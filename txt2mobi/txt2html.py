@@ -2,15 +2,11 @@
 
 import chardet
 import re
+import unicodedata
 from txt2mobi.utilities import codeTrans, ProjectConfig, no_html
 
 
 config = ProjectConfig()
-
-allowed = [u',', u'.', u"!", u"?", u":", u"*", u"[", u"]", u";", u"-", u"_", u"。", u"，", u"?", u"：",
-           u"；", u"【", u"】", u" ", u""]
-
-english = u'qazxswedcvfrtgbnhyujmkiolpQAZXSWEDCVFRTGBNHYUJMKIOLP1234567890'
 
 def get_coding(file_content):
     result = chardet.detect(file_content)
@@ -27,7 +23,7 @@ def clear_line(line):
     :return:
     :rtype:
     """
-    wd = [w for w in line if (19968 <= ord(w) <= 40869) or (w in allowed) or (w in english)]
+    wd = [w for w in line if not unicodedata.category(w).startswith('C')]
     result_line = u"".join(wd)
     return result_line
 
