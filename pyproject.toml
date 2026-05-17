@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "txt2mobi"
+version = "0.0.3"
+description = "Convert Chinese-Novel txt book to kindle .mobi file"
+readme = "README.md"
+license = { text = "GNU GENERAL PUBLIC LICENSE" }
+authors = [
+    { name = "Alexander.Li", email = "superpowerlee@gmail.com" }
+]
+requires-python = ">=3.8"
+dependencies = [
+    "chardet",
+    "click",
+    "requests",
+]
+
+[project.scripts]
+txt2mobi = "txt2mobi.main:main"
+
+[project.urls]
+Homepage = "https://github.com/ipconfiger/txt2mobi"

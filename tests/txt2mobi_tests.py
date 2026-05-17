@@ -22,20 +22,20 @@ class TestTxt2MobiFunction(unittest.TestCase):
         file_path = os.path.join(utilities.current_working_dir(), '.project.ini')
         project_file_exists = os.path.isfile(file_path)
         self.assertEqual(project_file_exists, True)
-        with open(file_path, 'r') as f:
+        with open(file_path, 'r', encoding='utf-8') as f:
             lines = f.readlines()
-        self.assertEquals(len(lines), 7)
-        self.assertEquals(lines[0].strip(), '[txt2mobi]')
-        self.assertEquals(lines[1].strip(), 'kindlegen=kindlegen')
-        self.assertEquals(lines[2].strip(), '')
-        self.assertEquals(lines[3].strip(), '[book]')
-        self.assertEquals(lines[4].strip(), 'cover-img=cover.png')
-        self.assertEquals(lines[5].strip(), u'title=书名'.encode('utf8'))
-        self.assertEquals(lines[6].strip(), u"author=作者".encode('utf8'))
+        self.assertEqual(len(lines), 7)
+        self.assertEqual(lines[0].strip(), '[txt2mobi]')
+        self.assertEqual(lines[1].strip(), 'kindlegen=kindlegen')
+        self.assertEqual(lines[2].strip(), '')
+        self.assertEqual(lines[3].strip(), '[book]')
+        self.assertEqual(lines[4].strip(), 'cover-img=cover.png')
+        self.assertEqual(lines[5].strip(), 'title=书名')
+        self.assertEqual(lines[6].strip(), 'author=作者')
 
         cover_file_path = os.path.join(utilities.current_working_dir(), 'cover.png')
         cover_file_exists = os.path.isfile(cover_file_path)
-        self.assertEquals(cover_file_exists, True)
+        self.assertEqual(cover_file_exists, True)
 
     def test_01_check_kindlegen(self):
         """
@@ -49,7 +49,7 @@ class TestTxt2MobiFunction(unittest.TestCase):
         try:
             utilities.check_kindlgen(command='error_command')
             self.assertFalse(True)
-        except KindleGenNotInstalledError, e:
+        except KindleGenNotInstalledError as e:
             pass
 
     def test_02_load_project_config(self):
@@ -62,8 +62,8 @@ class TestTxt2MobiFunction(unittest.TestCase):
         config = ProjectConfig()
         self.assertEqual(config.gen_command, 'kindlegen')
         self.assertEqual(config.cover_image, 'cover.png')
-        self.assertEqual(config.title, u'书名')
-        self.assertEqual(config.author, u'作者')
+        self.assertEqual(config.title, '书名')
+        self.assertEqual(config.author, '作者')
 
 
     def test_03_gen(self):
