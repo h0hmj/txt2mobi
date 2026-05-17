@@ -65,7 +65,7 @@ def test_project(title):
                 f.write(book.gen_html_file(idx))
             print("book-%s.html生成完毕" % idx)
         except EncodingError as e:
-            print("文件编码异常无法解析,请尝试用iconv来转码成utf8后再试,或者提交issuse")
+            print("文件编码异常无法解析,请尝试用iconv来转码成utf8后再试,或者提交issue")
             sys.exit(1)
     return book
 

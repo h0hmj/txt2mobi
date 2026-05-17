@@ -320,7 +320,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     </guide>
 </package>
         """ % dict(
-            title_name=u"目录",
+            title_name="目录",
             author=config.author,
             title="%s-%s" % (config.title, idx) if self.book_count() > 1 else config.title,
             cover=config.cover_image,
