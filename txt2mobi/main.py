@@ -2,7 +2,7 @@
 
 import sys
 from txt2mobi.scaffold import op_init_project, generate_project, test_project
-from utilities import start_server
+from txt2mobi.utilities import start_server
 import click
 
 

@@ -88,5 +88,9 @@ ENV/
 # Rope project settings
 .ropeproject
 
+# uv
+.venv/
+uv.lock
+
 # pyCharm project
 .idea
